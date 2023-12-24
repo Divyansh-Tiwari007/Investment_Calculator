@@ -1,7 +1,6 @@
 import "./App.css";
 import Body from "./Components/Body";
 import Header from "./Components/Header";
-import React from "react";
 
 function App() {
   return (

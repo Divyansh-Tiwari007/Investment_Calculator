@@ -1,26 +1,22 @@
-import { makeStyles, tokens } from "@fluentui/react-components";
+import { makeStyles, shorthands, tokens } from "@fluentui/react-components";
 import { Flex } from "@mantine/core";
 import Input from "./Input";
-import Table from "./Table";
-import React from "react";
 
 const useStyles = makeStyles({
   outerBody: {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    // backgroundColor: "#d6d6d6",
   },
   body: {
-    // backgroundColor: "ColorTokens.colorNeutralBackground3Pressed",
-    backgroundColor: tokens.colorNeutralBackground3Pressed,
+    ...shorthands.borderRadius("20px"),
+    backgroundImage: "url(Invest_Calci_back.jpg)",
+    backgroundColor: "#84c140",
     width: "90%",
     height: "auto",
     minHeight: "60vh",
-    // overflowY: "scroll",
     display: "flex",
     justifyContent: "center",
-    // alignItems: "center",
   },
 });
 

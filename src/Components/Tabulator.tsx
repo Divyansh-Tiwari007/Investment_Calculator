@@ -1,5 +1,5 @@
-import { formatter } from "../utils/Investment";
 import { makeStyles, shorthands } from "@fluentui/react-components";
+import { formatter } from "../utils/Investment";
 
 const useStyles = makeStyles({
   ThTd: {

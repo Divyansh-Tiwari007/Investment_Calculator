@@ -1,6 +1,6 @@
+import { makeStyles, shorthands } from "@fluentui/react-components";
 import { calculateInvestmentResults } from "../utils/Investment";
 import Tabulator from "./Tabulator";
-import { makeStyles, shorthands } from "@fluentui/react-components";
 
 const useStyles = makeStyles({
   result: {
@@ -8,7 +8,7 @@ const useStyles = makeStyles({
     backgroundColor: "#616161",
     ...shorthands.margin("2rem", "auto"),
     ...shorthands.padding("1rem"),
-    /* table-layout: fixed", */
+    ...shorthands.borderRadius("15px"),
     display: "flex",
     borderSpacing: "1rem",
     justifyContent: "center",
@@ -23,7 +23,7 @@ const useStyles = makeStyles({
   resultTbody: {
     fontFamily: "'Roboto Condensed', sans-serif",
     fontSize: "1rem",
-    color: "#c2e9e0",
+    color: "white",
   },
 
   ThTd: {

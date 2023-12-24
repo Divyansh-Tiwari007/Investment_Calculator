@@ -1,13 +1,11 @@
-//creating a function to take input of Initial investment, annual investment, expected return and duration
-import UserInput from "./UserInput";
+import { makeStyles, shorthands } from "@fluentui/react-components";
 import { useState } from "react";
 import Table from "./Table";
-import { makeStyles, shorthands } from "@fluentui/react-components";
+import UserInput from "./UserInput";
 
 const useStyles = makeStyles({
   userInput: {
     ...shorthands.padding("1rem"),
-    // maxWidth: "30rem",
     width: "30rem",
     ...shorthands.margin("2rem", "auto"),
     ...shorthands.borderRadius("14px"),

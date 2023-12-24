@@ -1,4 +1,3 @@
-import React from "react";
 import { makeStyles, shorthands } from "@fluentui/react-components";
 
 const useStyles = makeStyles({
