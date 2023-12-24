@@ -15,7 +15,9 @@ const useStyles = makeStyles({
     // backgroundColor: "ColorTokens.colorNeutralBackground3Pressed",
     backgroundColor: tokens.colorNeutralBackground3Pressed,
     width: "90%",
-    height: "100vh",
+    height: "auto",
+    minHeight: "60vh",
+    // overflowY: "scroll",
     display: "flex",
     justifyContent: "center",
     // alignItems: "center",
@@ -29,7 +31,6 @@ function Body() {
       <div className={classes.body}>
         <Flex display="flex" direction="column">
           <Input />
-          <Table />
         </Flex>
       </div>
     </div>

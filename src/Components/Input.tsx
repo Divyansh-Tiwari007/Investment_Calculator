@@ -2,7 +2,26 @@
 import UserInput from "./UserInput";
 import { useState } from "react";
 import Table from "./Table";
-import React from "react";
+import { makeStyles, shorthands } from "@fluentui/react-components";
+
+const useStyles = makeStyles({
+  userInput: {
+    ...shorthands.padding("1rem"),
+    // maxWidth: "30rem",
+    width: "30rem",
+    ...shorthands.margin("2rem", "auto"),
+    ...shorthands.borderRadius("14px"),
+    backgroundColor: "#616161",
+    backgroud: "linearGradient(180deg, #307e6c, #2b996d)",
+  },
+
+  userInputGroup: {
+    display: "flex",
+    justifyContent: "space-evenly",
+    ...shorthands.gap("1.5rem"),
+  },
+});
+
 export default function Input() {
   const [userInput, setUserInput] = useState({
     initialInvestment: 1000,
@@ -22,10 +41,12 @@ export default function Input() {
 
   const validResult = userInput.duration >= 1;
 
+  const classes = useStyles();
+
   return (
     <>
-      <div id="user-input">
-        <div className="input-group">
+      <div className={classes.userInput}>
+        <div className={classes.userInputGroup}>
           <UserInput
             Label="Initial Investment"
             Key="initialInvestment"
@@ -39,7 +60,7 @@ export default function Input() {
             userInput={userInput}
           />
         </div>
-        <div className="input-group">
+        <div className={classes.userInputGroup}>
           <UserInput
             Label="Expected Return"
             Key="expectedReturn"
