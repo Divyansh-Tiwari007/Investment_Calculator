@@ -1,12 +1,14 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import Header from './Components/Header';
+import "./App.css";
+import Body from "./Components/Body";
+import Header from "./Components/Header";
+import React from "react";
 
 function App() {
   return (
     <div className="App">
-      <Header/>
+      <Header />
+      <div className="fade_rule"></div>
+      <Body />
     </div>
   );
 }
