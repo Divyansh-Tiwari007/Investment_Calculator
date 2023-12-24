@@ -1,7 +1,14 @@
-
-
-
-
-
-
-
+.fade_rule {
+  height: 12px;
+  background-color: red;
+  width: 66rem;
+  margin: 20px auto;
+  background-image: -webkit-gradient(
+    linear,
+    left bottom,
+    right bottom,
+    color-stop(0, white),
+    color-stop(0.5, #84c140),
+    color-stop(1, white)
+  );
+}
