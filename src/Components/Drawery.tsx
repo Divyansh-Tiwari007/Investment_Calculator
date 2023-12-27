@@ -10,9 +10,9 @@ import {
   tokens,
 } from "@fluentui/react-components";
 import { Dismiss24Regular } from "@fluentui/react-icons";
-import * as React from "react";
 import { useState } from "react";
 import UserInput from "./UserInput";
+import { Overlay } from "@mantine/core";
 // import { Center, Flex } from "@mantine/core";
 
 const useStyles = makeStyles({
@@ -73,15 +73,16 @@ const useStyles = makeStyles({
 });
 
 interface IDrawerProps {
-  userInput: ;
+  userInput: number;
   status: boolean;
-  onChanged: VoidFunction;
+  onChanged: Function;
   onClicked: VoidFunction;
 }
 type DrawerType = Required<DrawerProps>["type"];
 
 export default function Drawery({
   userInput,
+  // type,
   status,
   onChanged,
   onClicked,
@@ -92,7 +93,7 @@ export default function Drawery({
     <div className={styles.root}>
       <Drawer
         className={styles.drawer}
-        type={status}
+        type="overlay"
         separator
         open={status}
         position={"end"}

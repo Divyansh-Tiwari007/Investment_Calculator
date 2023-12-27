@@ -9,6 +9,7 @@ import { Flex } from "@mantine/core";
 // import Input from "./Input";
 import Drawery from "./Drawery";
 import { useState } from "react";
+import TableFUI from "./TableFUI";
 
 const useStyles = makeStyles({
   outerBody: {
@@ -24,15 +25,18 @@ const useStyles = makeStyles({
     height: "auto",
     display: "flex",
     justifyContent: "center",
+    flexDirection: "column",
   },
 
   root: {
-    width: "30%",
+    width: "20%",
     ...shorthands.border("2px", "solid", "#ccc"),
     ...shorthands.overflow("hidden"),
     backgroundColor: "#616161",
     display: "flex",
     alignItems: "center",
+    ...shorthands.margin("auto"),
+    marginTop: "25px",
   },
 
   content: {
@@ -50,6 +54,7 @@ const useStyles = makeStyles({
     fontWeight: "Bolder",
     fontSize: "1rem",
     color: "white",
+    // marginLeft: "50%",
   },
 });
 
@@ -65,6 +70,10 @@ function Body() {
     duration: 10,
   });
 
+  function handleDrawerClick() {
+    setIsOpen(() => !isOpen);
+  }
+
   function handleChange(inputId: string, newValue: number) {
     setUserInput((prevUserInput: number[]) => {
       return {
@@ -74,11 +83,8 @@ function Body() {
     });
   }
 
-  function handleDrawerClick() {
-    setIsOpen(()=>!isOpen);
-  }
-
   const validResult = userInput.duration >= 1;
+
   const classes = useStyles();
 
   return (
@@ -87,7 +93,7 @@ function Body() {
         <div className={classes.root}>
           <div className={classes.content}>
             <Button className={classes.mainButton} onClick={handleDrawerClick}>
-              {type === "inline" ? "Click to Calculate" : "Click to Calculate"}
+              {"Click to Calculate"}
             </Button>
           </div>
         </div>
@@ -95,11 +101,12 @@ function Body() {
           <Drawery
             userInput={userInput}
             status={isOpen}
+            // Type={type}
             onChanged={handleChange}
             onClicked={handleDrawerClick}
           />
         ) : (
-          <br />
+          <TableFUI userInput={userInput} />
         )}
       </div>
     </div>

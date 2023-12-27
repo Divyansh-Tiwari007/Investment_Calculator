@@ -1,33 +1,33 @@
-// import { makeStyles, shorthands } from "@fluentui/react-components";
-// import { useState } from "react";
-// import UserInput from "./UserInput";
-// import TableFUI from "./TableFUI";
-// import Drawery from "./Drawery";
+import { makeStyles, shorthands } from "@fluentui/react-components";
+import { useState } from "react";
+import UserInput from "./UserInput";
+import TableFUI from "./TableFUI";
+import Drawery from "./Drawery";
 
-// const useStyles = makeStyles({
-//   userInput: {
-//     ...shorthands.padding("1rem"),
-//     width: "30rem",
-//     ...shorthands.margin("2rem", "auto"),
-//     ...shorthands.borderRadius("14px"),
-//     backgroundColor: "#616161",
-//     backgroud: "linearGradient(180deg, #307e6c, #2b996d)",
-//   },
+const useStyles = makeStyles({
+  userInput: {
+    ...shorthands.padding("1rem"),
+    width: "30rem",
+    ...shorthands.margin("2rem", "auto"),
+    ...shorthands.borderRadius("14px"),
+    backgroundColor: "#616161",
+    backgroud: "linearGradient(180deg, #307e6c, #2b996d)",
+  },
 
-//   userInputGroup: {
-//     display: "flex",
-//     justifyContent: "space-evenly",
-//     minHeight: "80px",
-//     ...shorthands.gap("1.5rem"),
-//     ...shorthands.margin("2%"),
-//   },
-//   drawery: {
-//     display: "flex",
-//     justifyContent: "center",
-//   },
-// });
+  userInputGroup: {
+    display: "flex",
+    justifyContent: "space-evenly",
+    minHeight: "80px",
+    ...shorthands.gap("1.5rem"),
+    ...shorthands.margin("2%"),
+  },
+  drawery: {
+    display: "flex",
+    justifyContent: "center",
+  },
+});
 
-// export default function Input() {
+export default function Input() {}
   
 
   
@@ -67,7 +67,7 @@
 //             userInput={userInput}
 //             Result={validResult}
 //           />
-//         </div>
+//         </div>x
 //       </div>
 //       <div className={classes.drawery}>
 //         <Drawery />
