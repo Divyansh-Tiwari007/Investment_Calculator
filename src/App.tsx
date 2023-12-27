@@ -4,12 +4,15 @@ import Header from "./Components/Header";
 
 function App() {
   return (
-    <div className="App">
-      <Header />
-      <div className="fade_rule"></div>
-      <Body />
-    </div>
+    <>
+      <div className="App">
+        <Header />
+        <div className="fade_rule"> </div>
+        <Body />
+      </div>
+    </>
   );
 }
 
 export default App;
+
