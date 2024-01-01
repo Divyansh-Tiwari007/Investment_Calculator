@@ -1,6 +1,6 @@
+import { makeStyles, shorthands } from "@fluentui/react-components";
 import { calculateInvestmentResults } from "../utils/Investment";
 import Tabulator from "./Tabulator";
-import { makeStyles, shorthands } from "@fluentui/react-components";
 
 const useStyles = makeStyles({
   result: {
@@ -8,7 +8,7 @@ const useStyles = makeStyles({
     backgroundColor: "#616161",
     ...shorthands.margin("2rem", "auto"),
     ...shorthands.padding("1rem"),
-    /* table-layout: fixed", */
+    ...shorthands.borderRadius("15px"),
     display: "flex",
     borderSpacing: "1rem",
     justifyContent: "center",
@@ -23,7 +23,7 @@ const useStyles = makeStyles({
   resultTbody: {
     fontFamily: "'Roboto Condensed', sans-serif",
     fontSize: "1rem",
-    color: "#c2e9e0",
+    color: "white",
   },
 
   ThTd: {
@@ -34,25 +34,25 @@ const useStyles = makeStyles({
   },
 });
 
-export default function Table({ userInput }: any) {
-  const result = calculateInvestmentResults(userInput);
-  const classes = useStyles();
-  return (
-    <div className={classes.result}>
-      <table>
-        <thead className={classes.resultThead}>
-          <tr>
-            <th className={classes.ThTd}>Year</th>
-            <th className={classes.ThTd}>Investment Value</th>
-            <th className={classes.ThTd}>Interest (Year)</th>
-            <th className={classes.ThTd}>Total Interest</th>
-            <th className={classes.ThTd}>Invested Capital</th>
-          </tr>
-        </thead>
-        <tbody className={classes.resultTbody}>
-          <Tabulator Result={result} />
-        </tbody>
-      </table>
-    </div>
-  );
-}
+export default function Table({ userInput }: any) {}
+//   const result = calculateInvestmentResults(userInput);
+//   const classes = useStyles();
+//   return (
+//     <div className={classes.result}>
+//       <table>
+//         <thead className={classes.resultThead}>
+//           <tr>
+//             <th className={classes.ThTd}>Year</th>
+//             <th className={classes.ThTd}>Investment Value</th>
+//             <th className={classes.ThTd}>Interest (Year)</th>
+//             <th className={classes.ThTd}>Total Interest</th>
+//             <th className={classes.ThTd}>Invested Capital</th>
+//           </tr>
+//         </thead>
+//         <tbody className={classes.resultTbody}>
+//           <Tabulator Result={result} />
+//         </tbody>
+//       </table>
+//     </div>
+//   );
+// }

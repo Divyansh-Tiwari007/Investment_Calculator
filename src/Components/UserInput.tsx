@@ -1,13 +1,12 @@
-import React from "react";
 import { makeStyles, shorthands } from "@fluentui/react-components";
+import { Field, Input } from "@fluentui/react-components";
+import React from "react";
 
 const useStyles = makeStyles({
   userInputLabel: {
-    display: "block",
-    marginBottom: "0.25rem",
     fontFamily: "'Roboto Condensed', sans-serif",
     fontSize: "0.8rem",
-    fontWeight: "bold",
+    fontWeight: "bolder",
     textTransform: "uppercase",
     color: "#84c140",
   },
@@ -20,23 +19,26 @@ const useStyles = makeStyles({
     backgroundColor: "transparent",
     color: "white",
     fontSize: "1rem",
+    ...shorthands.border("21px solid red"),
   },
 });
 
 export default function UserInput(props: any) {
   const classes = useStyles();
   return (
-    <>
-      <p>
-        <label className={classes.userInputLabel}>{props.Label}</label>
-        <input
+      <Field
+        label={<span className={classes.userInputLabel}>{props.Label}</span>}
+        required
+      >
+        <Input
           className={classes.userInputInput}
+          input={{ style: { color: "white" } }}
+          style={{ border: "2px solid #84c140" }}
           type="number"
           required
           value={props.userInput[props.Key]}
           onChange={(event) => props.onChange(props.Key, event.target.value)}
         />
-      </p>
-    </>
+      </Field>
   );
 }

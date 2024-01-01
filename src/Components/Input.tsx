@@ -1,13 +1,12 @@
-//creating a function to take input of Initial investment, annual investment, expected return and duration
-import UserInput from "./UserInput";
-import { useState } from "react";
-import Table from "./Table";
 import { makeStyles, shorthands } from "@fluentui/react-components";
+import { useState } from "react";
+import UserInput from "./UserInput";
+import TableFUI from "./TableFUI";
+import Drawery from "./Drawery";
 
 const useStyles = makeStyles({
   userInput: {
     ...shorthands.padding("1rem"),
-    // maxWidth: "30rem",
     width: "30rem",
     ...shorthands.margin("2rem", "auto"),
     ...shorthands.borderRadius("14px"),
@@ -18,68 +17,67 @@ const useStyles = makeStyles({
   userInputGroup: {
     display: "flex",
     justifyContent: "space-evenly",
+    minHeight: "80px",
     ...shorthands.gap("1.5rem"),
+    ...shorthands.margin("2%"),
+  },
+  drawery: {
+    display: "flex",
+    justifyContent: "center",
   },
 });
 
-export default function Input() {
-  const [userInput, setUserInput] = useState({
-    initialInvestment: 1000,
-    annualInvestment: 100,
-    expectedReturn: 10,
-    duration: 10,
-  });
+export default function Input() {}
+  
 
-  function handleChange(inputId: any, newValue: any) {
-    setUserInput((prevUserInput) => {
-      return {
-        ...prevUserInput,
-        [inputId]: +newValue,
-      };
-    });
-  }
+  
 
-  const validResult = userInput.duration >= 1;
+  
 
-  const classes = useStyles();
+//   const classes = useStyles();
 
-  return (
-    <>
-      <div className={classes.userInput}>
-        <div className={classes.userInputGroup}>
-          <UserInput
-            Label="Initial Investment"
-            Key="initialInvestment"
-            onChange={handleChange}
-            userInput={userInput}
-          />
-          <UserInput
-            Label="Annual Investment"
-            Key="annualInvestment"
-            onChange={handleChange}
-            userInput={userInput}
-          />
-        </div>
-        <div className={classes.userInputGroup}>
-          <UserInput
-            Label="Expected Return"
-            Key="expectedReturn"
-            onChange={handleChange}
-            userInput={userInput}
-          />
-          <UserInput
-            Label="Duration"
-            Key="duration"
-            onChange={handleChange}
-            userInput={userInput}
-          />
-        </div>
-      </div>
-      {validResult ? (
-        <Table userInput={userInput} />
-      ) : (
-        <p id="header">Duration must be greater than 0</p>
-      )}
-    </>
-  );
-}
+//   return (
+//     <>
+//       <div className={classes.userInput}>
+//         <div className={classes.userInputGroup}>
+//           <UserInput
+//             Label="Initial Investment"
+//             Key="initialInvestment"
+//             onChange={handleChange}
+//             userInput={userInput}
+//           />
+//           <UserInput
+//             Label="Annual Investment"
+//             Key="annualInvestment"
+//             onChange={handleChange}
+//             userInput={userInput}
+//           />
+//         </div>
+//         <div className={classes.userInputGroup}>
+//           <UserInput
+//             Label="Expected Return"
+//             Key="expectedReturn"
+//             onChange={handleChange}
+//             userInput={userInput}
+//           />
+//           <UserInput
+//             Label="Duration"
+//             Key="duration"
+//             onChange={handleChange}
+//             userInput={userInput}
+//             Result={validResult}
+//           />
+//         </div>x
+//       </div>
+//       <div className={classes.drawery}>
+//         <Drawery />
+//       </div>
+//       {validResult ? (
+//         <TableFUI userInput={userInput} />
+//       ) : (
+//         <p id="header">Duration must be greater than 0</p>
+//       )}
+//       {/* <Table` userInput={userInput} /> */}
+//     </>
+//   );
+// }

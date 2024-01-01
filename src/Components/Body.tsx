@@ -1,37 +1,113 @@
-import { makeStyles, tokens } from "@fluentui/react-components";
+import {
+  makeStyles,
+  shorthands,
+  Button,
+  tokens,
+  DrawerProps,
+} from "@fluentui/react-components";
 import { Flex } from "@mantine/core";
-import Input from "./Input";
-import Table from "./Table";
-import React from "react";
+// import Input from "./Input";
+import Drawery from "./Drawery";
+import { useState } from "react";
+import TableFUI from "./TableFUI";
 
 const useStyles = makeStyles({
   outerBody: {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    // backgroundColor: "#d6d6d6",
   },
   body: {
-    // backgroundColor: "ColorTokens.colorNeutralBackground3Pressed",
-    backgroundColor: tokens.colorNeutralBackground3Pressed,
+    ...shorthands.borderRadius("20px"),
+    backgroundImage: "url(Invest_Calci_back.jpg)",
+    backgroundColor: "#84c140",
     width: "90%",
     height: "auto",
-    minHeight: "60vh",
-    // overflowY: "scroll",
     display: "flex",
     justifyContent: "center",
-    // alignItems: "center",
+    flexDirection: "column",
+  },
+
+  root: {
+    width: "20%",
+    ...shorthands.border("2px", "solid", "#ccc"),
+    ...shorthands.overflow("hidden"),
+    backgroundColor: "#616161",
+    display: "flex",
+    alignItems: "center",
+    ...shorthands.margin("auto"),
+    marginTop: "25px",
+  },
+
+  content: {
+    ...shorthands.flex(1),
+    ...shorthands.padding("16px"),
+
+    display: "grid",
+    justifyContent: "flex-center",
+    alignItems: "flex-center",
+    gridRowGap: tokens.spacingVerticalXXL,
+    gridAutoRows: "max-content",
+  },
+  mainButton: {
+    backgroundColor: "#84c140",
+    fontWeight: "Bolder",
+    fontSize: "1rem",
+    color: "white",
+    // marginLeft: "50%",
   },
 });
 
+type DrawerType = Required<DrawerProps>["type"];
+
 function Body() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [type, setType] = useState<DrawerType>("overlay");
+  const [userInput, setUserInput]: any = useState({
+    initialInvestment: 1000,
+    annualInvestment: 100,
+    expectedReturn: 10,
+    duration: 10,
+  });
+
+  function handleDrawerClick() {
+    setIsOpen(() => !isOpen);
+  }
+
+  function handleChange(inputId: string, newValue: number) {
+    setUserInput((prevUserInput: number[]) => {
+      return {
+        ...prevUserInput,
+        [inputId]: +newValue,
+      };
+    });
+  }
+
+  const validResult = userInput.duration >= 1;
+
   const classes = useStyles();
+
   return (
     <div className={classes.outerBody}>
       <div className={classes.body}>
-        <Flex display="flex" direction="column">
-          <Input />
-        </Flex>
+        <div className={classes.root}>
+          <div className={classes.content}>
+            <Button className={classes.mainButton} onClick={handleDrawerClick}>
+              {"Click to Calculate"}
+            </Button>
+          </div>
+        </div>
+        {isOpen ? (
+          <Drawery
+            userInput={userInput}
+            status={isOpen}
+            // Type={type}
+            onChanged={handleChange}
+            onClicked={handleDrawerClick}
+          />
+        ) : (
+          <TableFUI userInput={userInput} />
+        )}
       </div>
     </div>
   );
