@@ -6,6 +6,7 @@ export function calculateInvestmentResults({
 }) {
   const annualData = [];
   let investmentValue = initialInvestment;
+  let j = initialInvestment;
 
   for (let i = 0; i < duration; i++) {
     const interestEarnedInYear = investmentValue * (expectedReturn / 100);
@@ -14,8 +15,7 @@ export function calculateInvestmentResults({
     const initialInvestment =
       investmentValue - interestEarnedInYear - annualInvestment;
 
-    const totalInterest =
-      investmentValue - annualInvestment * (i + 1) - initialInvestment;
+    const totalInterest = investmentValue - annualInvestment * (i + 1) - j;
 
     const totalAmountInvested = investmentValue - totalInterest;
 
