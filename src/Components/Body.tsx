@@ -5,7 +5,6 @@ import {
   tokens,
   DrawerProps,
 } from "@fluentui/react-components";
-import { Flex } from "@mantine/core";
 import Drawery from "./Drawery";
 import { useState } from "react";
 import TableFUI from "./TableFUI";
@@ -61,12 +60,6 @@ type DrawerType = Required<DrawerProps>["type"];
 function Body() {
   const [isOpen, setIsOpen] = useState(false);
   const [init, setInit] = useState(false);
-  const [userInput, setUserInput]: any = useState({
-    initialInvestment: 1000,
-    annualInvestment: 100,
-    expectedReturn: 10,
-    duration: 10,
-  });
 
   console.log(isOpen);
   console.log(init);
@@ -74,15 +67,6 @@ function Body() {
   function handleDrawerClick() {
     setIsOpen(() => !isOpen);
     setInit(true);
-  }
-
-  function handleChange(inputId: string, newValue: number) {
-    setUserInput((prevUserInput: number[]) => {
-      return {
-        ...prevUserInput,
-        [inputId]: +newValue,
-      };
-    });
   }
 
   const classes = useStyles();
@@ -99,23 +83,12 @@ function Body() {
         </div>
         {isOpen ? (
           init ? (
-            <Drawery
-              userInput={userInput}
-              status={isOpen}
-              onChanged={handleChange}
-              onClicked={handleDrawerClick}
-            />
+            <Drawery status={isOpen} onClicked={handleDrawerClick} />
           ) : (
-            // extra code here
-            <Drawery
-              status={isOpen}
-              userInput={userInput}
-              onChanged={handleChange}
-              onClicked={handleDrawerClick}
-            />
+            <Drawery status={isOpen} onClicked={handleDrawerClick} />
           )
         ) : init ? (
-          <TableFUI userInput={userInput} />
+          <TableFUI />
         ) : (
           <></>
         )}

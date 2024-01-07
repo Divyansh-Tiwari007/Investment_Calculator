@@ -9,6 +9,8 @@ import {
   shorthands,
 } from "@fluentui/react-components";
 import { calculateInvestmentResults, formatter } from "../utils/Investment";
+import { useContext } from "react";
+import { UserInput } from "./Context";
 
 const useStyles = makeStyles({
   result: {
@@ -47,11 +49,15 @@ const columns = [
   { columnKey: "investedCapital", label: "Invested Capital" },
 ];
 
-const TableFUI = ({ userInput }: any) => {
+const TableFUI = () => {
+  const {initialInvestment,annualInvestment,expectedReturn,duration}=useContext(UserInput);
   const classes = useStyles();
-  const result = calculateInvestmentResults(userInput);
-  return (
-    <div className={classes.result}>
+  const result = calculateInvestmentResults({initialInvestment,annualInvestment,expectedReturn,duration});
+   
+    if (initialInvestment !== 0 && annualInvestment !== 0 && duration !== 0 && expectedReturn !== 0)
+    {
+      return(
+      <div className={classes.result}>
       <Table>
         <TableHeader>
           <TableRow className={classes.resultThead}>
@@ -76,7 +82,17 @@ const TableFUI = ({ userInput }: any) => {
         </TableBody>
       </Table>
     </div>
-  );
+      );
+    }
+    else
+    {
+      return(
+        <>
+        </>
+      );
+    }
+    
+  
 };
 
 export default TableFUI;

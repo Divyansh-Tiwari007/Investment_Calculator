@@ -1,8 +1,7 @@
-
 import { useForm } from "react-hook-form";
-import {  makeStyles, shorthands } from "@fluentui/react-components";
-import { useState } from "react";
-
+import { makeStyles, shorthands } from "@fluentui/react-components";
+import { useContext, useState } from "react";
+import { UserInput } from "./Context";
 
 const useStyles = makeStyles({
   userInputLabel: {
@@ -11,7 +10,7 @@ const useStyles = makeStyles({
     fontWeight: "bolder",
     textTransform: "uppercase",
     color: "#84c140",
-    ...shorthands.margin( "0px"),
+    ...shorthands.margin("0px"),
   },
 
   userInputInput: {
@@ -31,26 +30,36 @@ const useStyles = makeStyles({
     fontWeight: "Bolder",
     fontSize: "1rem",
     color: "white",
-    marginTop:"3vh",
+    marginTop: "3vh",
     fontFamily: "'Roboto Condensed', sans-serif",
     ...shorthands.borderRadius("0.25rem"),
   },
 });
 
 interface IFormProps {
-  onChanged: Function;
-  userInput: Object;
   onClicked: VoidFunction;
 }
 
-function InputForm({ onClicked, onChanged, userInput }: IFormProps) {
+function InputForm({ onClicked }: IFormProps) {
+  const mainInput = useContext(UserInput);
+  const [userInput, setUserInput]: any = useState({
+    initialInvestment: 1000,
+    annualInvestment: 100,
+    expectedReturn: 10,
+    duration: 10,
+  });
 
-
+  function onClickedLocal() {
+    mainInput.initialInvestment = userInput.initialInvestment;
+    mainInput.annualInvestment = userInput.annualInvestment;
+    mainInput.expectedReturn = userInput.expectedReturn;
+    mainInput.duration = userInput.duration;
+  }
   const {
     register,
     formState: { errors },
   } = useForm({
-    mode: "onChange", // Enable onChange mode to validate inputs on change
+    mode: "onChange",
   });
 
   const classes = useStyles();
@@ -63,9 +72,15 @@ function InputForm({ onClicked, onChanged, userInput }: IFormProps) {
         className={classes.userInputInput}
         id="input1"
         {...register("input1", { required: true, min: 1, pattern: /^[0-9]*$/ })}
-        defaultValue={1000}
-        onInput={(event: React.ChangeEvent<HTMLInputElement>) => onChanged("initialInvestment", event.target.value)}
-        // onInput={(event: React.ChangeEvent<HTMLInputElement>) => setUserInput.initialInvestment(Number(event.target.value))}
+        defaultValue={userInput.initialInvestment}
+        onInput={(event: React.ChangeEvent<HTMLInputElement>) =>
+          setUserInput({
+            initialInvestment: parseInt(event.target.value),
+            annualInvestment: userInput.annualInvestment,
+            expectedReturn: userInput.expectedReturn,
+            duration: userInput.duration,
+          })
+        }
       />
       {errors.input1?.type === "required" && (
         <span>This field is required </span>
@@ -82,10 +97,15 @@ function InputForm({ onClicked, onChanged, userInput }: IFormProps) {
         className={classes.userInputInput}
         id="input2"
         {...register("input2", { required: true, min: 1, pattern: /^[0-9]*$/ })}
-        defaultValue={100}
-        onInput={(event: React.ChangeEvent<HTMLInputElement>) => onChanged("annualInvestment", event.target.value)}
-        // onInput={(event: React.ChangeEvent<HTMLInputElement>) => seti2(Number(event.target.value))}
-      
+        defaultValue={userInput.annualInvestment}
+        onInput={(event: React.ChangeEvent<HTMLInputElement>) =>
+          setUserInput({
+            initialInvestment: userInput.initialInvestment,
+            annualInvestment: parseInt(event.target.value),
+            expectedReturn: userInput.expectedReturn,
+            duration: userInput.duration,
+          })
+        }
       />
       {errors.input2?.type === "required" && (
         <span>This field is required </span>
@@ -102,8 +122,15 @@ function InputForm({ onClicked, onChanged, userInput }: IFormProps) {
         className={classes.userInputInput}
         id="input3"
         {...register("input3", { required: true, min: 1, pattern: /^[0-9]*$/ })}
-        defaultValue={10}
-        onInputCapture={(event: React.ChangeEvent<HTMLInputElement>) => onChanged("expectedReturn", event.target.value)}
+        defaultValue={userInput.expectedReturn}
+        onInput={(event: React.ChangeEvent<HTMLInputElement>) =>
+          setUserInput({
+            initialInvestment: userInput.initialInvestment,
+            annualInvestment: userInput.annualInvestment,
+            expectedReturn: parseInt(event.target.value),
+            duration: userInput.duration,
+          })
+        }
       />
       {errors.input3?.type === "required" && (
         <span>This field is required </span>
@@ -120,8 +147,15 @@ function InputForm({ onClicked, onChanged, userInput }: IFormProps) {
         className={classes.userInputInput}
         id="input4"
         {...register("input4", { required: true, min: 1, pattern: /^[0-9]+$/ })}
-        defaultValue={10}
-        onInputCapture={(event: React.ChangeEvent<HTMLInputElement>) => onChanged("duration", event.target.value)}
+        defaultValue={userInput.duration}
+        onInput={(event: React.ChangeEvent<HTMLInputElement>) =>
+          setUserInput({
+            initialInvestment: userInput.initialInvestment,
+            annualInvestment: userInput.annualInvestment,
+            expectedReturn: userInput.expectedReturn,
+            duration: parseInt(event.target.value),
+          })
+        }
       />
       {errors.input4?.type === "required" && (
         <span>This field is required </span>
@@ -133,8 +167,10 @@ function InputForm({ onClicked, onChanged, userInput }: IFormProps) {
 
       <button
         className={classes.mainButton}
-        onClick={onClicked
-        }
+        onClick={() => {
+          const toggleSwitch = onClicked();
+          const sendData = onClickedLocal();
+        }}
         disabled={Object.keys(errors).length !== 0}
       >
         Submit

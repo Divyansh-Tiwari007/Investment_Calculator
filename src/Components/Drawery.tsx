@@ -71,18 +71,11 @@ const useStyles = makeStyles({
 
 interface IDrawerProps {
   status: boolean;
-  userInput: Object;
-  onChanged: Function;
   onClicked: VoidFunction;
 }
 type DrawerType = Required<DrawerProps>["type"];
 
-export default function Drawery({
-  status,
-  userInput,
-  onChanged,
-  onClicked,
-}: IDrawerProps) {
+export default function Drawery({ status, onClicked }: IDrawerProps) {
   const styles = useStyles();
 
   return (
@@ -114,7 +107,7 @@ export default function Drawery({
         <DrawerBody>
           <div className={styles.userInput}>
             <div className={styles.userInputGroup}>
-              <InputForm3 onChanged={onChanged} userInput={userInput} onClicked={onClicked} />
+              <InputForm3 onClicked={onClicked} />
             </div>
           </div>
         </DrawerBody>
