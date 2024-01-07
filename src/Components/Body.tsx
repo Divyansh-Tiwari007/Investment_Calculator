@@ -10,8 +10,6 @@ import Drawery from "./Drawery";
 import { useState } from "react";
 import TableFUI from "./TableFUI";
 
-
-
 const useStyles = makeStyles({
   outerBody: {
     display: "flex",
@@ -60,9 +58,6 @@ const useStyles = makeStyles({
 
 type DrawerType = Required<DrawerProps>["type"];
 
-
-
-
 function Body() {
   const [isOpen, setIsOpen] = useState(false);
   const [init, setInit] = useState(false);
@@ -73,14 +68,12 @@ function Body() {
     duration: 10,
   });
 
-  
-  console.log(isOpen)
-  console.log(init)
-
+  console.log(isOpen);
+  console.log(init);
 
   function handleDrawerClick() {
     setIsOpen(() => !isOpen);
-    setInit(true)
+    setInit(true);
   }
 
   function handleChange(inputId: string, newValue: number) {
@@ -101,29 +94,30 @@ function Body() {
           <div className={classes.content}>
             <Button className={classes.mainButton} onClick={handleDrawerClick}>
               {"Click to Calculate"}
-            </Button>           
+            </Button>
           </div>
         </div>
         {isOpen ? (
           init ? (
-            <Drawery 
-            userInput={userInput}
-            status={isOpen}
-            onChanged={handleChange}
-            onClicked={handleDrawerClick}/>
+            <Drawery
+              userInput={userInput}
+              status={isOpen}
+              onChanged={handleChange}
+              onClicked={handleDrawerClick}
+            />
+          ) : (
             // extra code here
-            )
-            :(<Drawery 
-            userInput={userInput}
-            status={isOpen}
-            onChanged={handleChange}
-            onClicked={handleDrawerClick}
-             
-          />)  
+            <Drawery
+              status={isOpen}
+              userInput={userInput}
+              onChanged={handleChange}
+              onClicked={handleDrawerClick}
+            />
+          )
+        ) : init ? (
+          <TableFUI userInput={userInput} />
         ) : (
-          init ? (
-            <TableFUI userInput={userInput}/>)
-            :(<></>) 
+          <></>
         )}
       </div>
     </div>

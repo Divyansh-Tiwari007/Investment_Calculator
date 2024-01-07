@@ -10,7 +10,7 @@ import {
   tokens,
 } from "@fluentui/react-components";
 import { Dismiss24Regular } from "@fluentui/react-icons";
-import InputForm from "./InputForm";
+import InputForm3 from "./InputForm3";
 
 const useStyles = makeStyles({
   root: {
@@ -70,16 +70,16 @@ const useStyles = makeStyles({
 });
 
 interface IDrawerProps {
-  userInput: object;
   status: boolean;
+  userInput: Object;
   onChanged: Function;
   onClicked: VoidFunction;
 }
 type DrawerType = Required<DrawerProps>["type"];
 
 export default function Drawery({
-  userInput,
   status,
+  userInput,
   onChanged,
   onClicked,
 }: IDrawerProps) {
@@ -114,9 +114,7 @@ export default function Drawery({
         <DrawerBody>
           <div className={styles.userInput}>
             <div className={styles.userInputGroup}>
-              <InputForm userInput={userInput} 
-              onChanged={onChanged}
-              onClicked={onClicked} />
+              <InputForm3 onChanged={onChanged} userInput={userInput} onClicked={onClicked} />
             </div>
           </div>
         </DrawerBody>
