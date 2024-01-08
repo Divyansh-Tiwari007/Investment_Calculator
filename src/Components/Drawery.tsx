@@ -4,20 +4,20 @@ import {
   DrawerBody,
   DrawerHeader,
   DrawerHeaderTitle,
-  DrawerProps,
   makeStyles,
   shorthands,
   tokens,
 } from "@fluentui/react-components";
 import { Dismiss24Regular } from "@fluentui/react-icons";
-import InputForm3 from "./InputForm3";
+import InputForm3 from "./InputForm";
 
 const useStyles = makeStyles({
   root: {
     width: "30%",
     ...shorthands.border("2px", "solid", "#ccc"),
     ...shorthands.overflow("hidden"),
-    backgroundColor: "#616161",
+    // backgroundColor: "red",
+    color: "black",
     display: "flex",
     alignItems: "center",
   },
@@ -39,14 +39,16 @@ const useStyles = makeStyles({
   },
 
   mainButton: {
-    backgroundColor: "#84c140",
+    // backgroundColor: "#84c140",
+
     fontWeight: "Bolder",
     fontSize: "1rem",
     color: "white",
   },
 
   drawer: {
-    backgroundColor: "#616161",
+    backgroundColor: tokens.colorPaletteGreenBackground3,
+    color: "black",
     width: "50%",
   },
 
@@ -55,7 +57,7 @@ const useStyles = makeStyles({
     width: "90%",
     ...shorthands.margin("2rem", "auto"),
     ...shorthands.borderRadius("14px"),
-    backgroundColor: "#616161",
+    backgroundColor: tokens.colorPaletteGreenBackground2,
     backgroud: "linearGradient(180deg, #307e6c, #2b996d)",
   },
 
@@ -73,7 +75,6 @@ interface IDrawerProps {
   status: boolean;
   onClicked: VoidFunction;
 }
-type DrawerType = Required<DrawerProps>["type"];
 
 export default function Drawery({ status, onClicked }: IDrawerProps) {
   const styles = useStyles();
@@ -86,11 +87,10 @@ export default function Drawery({ status, onClicked }: IDrawerProps) {
         separator
         open={status}
         position={"end"}
-        onOpenChange={(_, { open }) => onClicked}
       >
         <DrawerHeader>
           <DrawerHeaderTitle
-            style={{ color: "#84c140" }}
+            style={{ color: "black" }}
             action={
               <Button
                 appearance="subtle"

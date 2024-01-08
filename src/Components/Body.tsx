@@ -1,13 +1,12 @@
 import {
+  Button,
   makeStyles,
   shorthands,
-  Button,
   tokens,
-  DrawerProps,
 } from "@fluentui/react-components";
-import Drawery from "./Drawery";
 import { useState } from "react";
-import TableFUI from "./TableFUI";
+import Drawery from "./Drawery";
+import TableFUI from "./Table";
 
 const useStyles = makeStyles({
   outerBody: {
@@ -34,7 +33,8 @@ const useStyles = makeStyles({
     display: "flex",
     alignItems: "center",
     ...shorthands.margin("auto"),
-    marginTop: "25px",
+    marginTop: "30px",
+    marginBottom: "30px",
   },
 
   content: {
@@ -55,14 +55,9 @@ const useStyles = makeStyles({
   },
 });
 
-type DrawerType = Required<DrawerProps>["type"];
-
 function Body() {
   const [isOpen, setIsOpen] = useState(false);
   const [init, setInit] = useState(false);
-
-  console.log(isOpen);
-  console.log(init);
 
   function handleDrawerClick() {
     setIsOpen(() => !isOpen);
