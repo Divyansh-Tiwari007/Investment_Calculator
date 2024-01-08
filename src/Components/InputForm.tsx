@@ -27,7 +27,7 @@ const useStyles = makeStyles({
     color: "white",
     fontSize: "1rem",
     ...shorthands.border("21px solid red"),
-    marginLeft: "5px",
+    // marginLeft: "5px",
   },
 
   mainButton: {
@@ -51,7 +51,7 @@ const useStyles = makeStyles({
 
   error: {
     color: tokens.colorPaletteRedForeground3,
-    marginLeft: "10px",
+    // marginLeft: "10px",
   },
 });
 
@@ -84,6 +84,8 @@ function InputForm({ onClicked }: IFormProps) {
         label={
           <span className={classes.userInputLabel}>Initial Investment</span>
         }
+        validationState={errors.input1 ? "error" : "success"}
+        validationMessage={errors.input1?.message as string}
       >
         <Input
           className={classes.userInputInput}
@@ -104,7 +106,7 @@ function InputForm({ onClicked }: IFormProps) {
           })}
           defaultValue={mainInput.initialInvestment.toString()}
         />
-        <p className={classes.error}>{errors.input1?.message as string}</p>
+        {/* <p className={classes.error}>{errors.input1?.message as string}</p> */}
       </Field>
 
       <Field
@@ -112,6 +114,8 @@ function InputForm({ onClicked }: IFormProps) {
         label={
           <span className={classes.userInputLabel}>Annual Investment</span>
         }
+        validationState={errors.input2 ? "error" : "success"}
+        validationMessage={errors.input2?.message as string}
       >
         <Input
           className={classes.userInputInput}
@@ -132,11 +136,13 @@ function InputForm({ onClicked }: IFormProps) {
           })}
           defaultValue={mainInput.annualInvestment.toString()}
         />
-        <p className={classes.error}>{errors.input2?.message as string}</p>
+        {/* <p className={classes.error}>{errors.input2?.message as string}</p> */}
       </Field>
       <Field
         required
         label={<span className={classes.userInputLabel}>Expected Returns</span>}
+        validationState={errors.input3 ? "error" : "success"}
+        validationMessage={errors.input3?.message as string}
       >
         <Input
           className={classes.userInputInput}
@@ -157,11 +163,13 @@ function InputForm({ onClicked }: IFormProps) {
           })}
           defaultValue={mainInput.expectedReturn.toString()}
         />
-        <p className={classes.error}>{errors.input3?.message as string}</p>
+        {/* <p className={classes.error}>{errors.input3?.message as string}</p> */}
       </Field>
       <Field
         required
         label={<span className={classes.userInputLabel}>Number of Years</span>}
+        validationState={errors.input4 ? "error" : "success"}
+        validationMessage={errors.input4?.message as string}
       >
         <Input
           className={classes.userInputInput}
@@ -182,7 +190,7 @@ function InputForm({ onClicked }: IFormProps) {
           })}
           defaultValue={mainInput.duration.toString()}
         />
-        <p className={classes.error}>{errors.input4?.message as string}</p>
+        {/* <p className={classes.error}>{errors.input4?.message as string}</p> */}
       </Field>
       <button
         className={classes.mainButton}

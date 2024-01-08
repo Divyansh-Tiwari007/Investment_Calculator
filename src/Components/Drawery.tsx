@@ -90,7 +90,7 @@ export default function Drawery({ status, onClicked }: IDrawerProps) {
       >
         <DrawerHeader>
           <DrawerHeaderTitle
-            style={{ color: "black" }}
+            style={{ color: "white" }}
             action={
               <Button
                 appearance="subtle"
