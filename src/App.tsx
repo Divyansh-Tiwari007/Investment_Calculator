@@ -4,12 +4,6 @@ import Header from "./Components/Header";
 import { UserInput } from "./Components/Context";
 
 function App() {
-  // const [userInput, setUserInput]: any = useState({
-  //   initialInvestment: 1000,
-  //   annualInvestment: 100,
-  //   expectedReturn: 10,
-  //   duration: 10,
-  // });
 
   return (
     <UserInput.Provider

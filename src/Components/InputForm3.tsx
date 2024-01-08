@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { makeStyles, shorthands } from "@fluentui/react-components";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { UserInput } from "./Context";
 
 const useStyles = makeStyles({
@@ -42,21 +42,16 @@ interface IFormProps {
 
 function InputForm({ onClicked }: IFormProps) {
   const mainInput = useContext(UserInput);
-  const [userInput, setUserInput]: any = useState({
-    initialInvestment: 1000,
-    annualInvestment: 100,
-    expectedReturn: 10,
-    duration: 10,
-  });
 
   function onClickedLocal() {
-    mainInput.initialInvestment = userInput.initialInvestment;
-    mainInput.annualInvestment = userInput.annualInvestment;
-    mainInput.expectedReturn = userInput.expectedReturn;
-    mainInput.duration = userInput.duration;
+    mainInput.initialInvestment = parseInt(getValues("input1"));
+    mainInput.annualInvestment = parseInt(getValues("input2"));
+    mainInput.expectedReturn = parseInt(getValues("input3"));
+    mainInput.duration = parseInt(getValues("input4"));
   }
   const {
     register,
+    getValues,
     formState: { errors },
   } = useForm({
     mode: "onChange",
@@ -72,15 +67,7 @@ function InputForm({ onClicked }: IFormProps) {
         className={classes.userInputInput}
         id="input1"
         {...register("input1", { required: true, min: 1, pattern: /^[0-9]*$/ })}
-        defaultValue={userInput.initialInvestment}
-        onInput={(event: React.ChangeEvent<HTMLInputElement>) =>
-          setUserInput({
-            initialInvestment: parseInt(event.target.value),
-            annualInvestment: userInput.annualInvestment,
-            expectedReturn: userInput.expectedReturn,
-            duration: userInput.duration,
-          })
-        }
+        defaultValue={mainInput.initialInvestment}
       />
       {errors.input1?.type === "required" && (
         <span>This field is required </span>
@@ -97,15 +84,7 @@ function InputForm({ onClicked }: IFormProps) {
         className={classes.userInputInput}
         id="input2"
         {...register("input2", { required: true, min: 1, pattern: /^[0-9]*$/ })}
-        defaultValue={userInput.annualInvestment}
-        onInput={(event: React.ChangeEvent<HTMLInputElement>) =>
-          setUserInput({
-            initialInvestment: userInput.initialInvestment,
-            annualInvestment: parseInt(event.target.value),
-            expectedReturn: userInput.expectedReturn,
-            duration: userInput.duration,
-          })
-        }
+        defaultValue={mainInput.annualInvestment}
       />
       {errors.input2?.type === "required" && (
         <span>This field is required </span>
@@ -122,15 +101,7 @@ function InputForm({ onClicked }: IFormProps) {
         className={classes.userInputInput}
         id="input3"
         {...register("input3", { required: true, min: 1, pattern: /^[0-9]*$/ })}
-        defaultValue={userInput.expectedReturn}
-        onInput={(event: React.ChangeEvent<HTMLInputElement>) =>
-          setUserInput({
-            initialInvestment: userInput.initialInvestment,
-            annualInvestment: userInput.annualInvestment,
-            expectedReturn: parseInt(event.target.value),
-            duration: userInput.duration,
-          })
-        }
+        defaultValue={mainInput.expectedReturn}
       />
       {errors.input3?.type === "required" && (
         <span>This field is required </span>
@@ -147,15 +118,7 @@ function InputForm({ onClicked }: IFormProps) {
         className={classes.userInputInput}
         id="input4"
         {...register("input4", { required: true, min: 1, pattern: /^[0-9]+$/ })}
-        defaultValue={userInput.duration}
-        onInput={(event: React.ChangeEvent<HTMLInputElement>) =>
-          setUserInput({
-            initialInvestment: userInput.initialInvestment,
-            annualInvestment: userInput.annualInvestment,
-            expectedReturn: userInput.expectedReturn,
-            duration: parseInt(event.target.value),
-          })
-        }
+        defaultValue={mainInput.duration}
       />
       {errors.input4?.type === "required" && (
         <span>This field is required </span>

@@ -54,7 +54,7 @@ const TableFUI = () => {
   const classes = useStyles();
   const result = calculateInvestmentResults({initialInvestment,annualInvestment,expectedReturn,duration});
    
-    if (initialInvestment !== 0 && annualInvestment !== 0 && duration !== 0 && expectedReturn !== 0)
+    if (initialInvestment > 0 && annualInvestment > 0 && duration > 0 && expectedReturn > 0)
     {
       return(
       <div className={classes.result}>
