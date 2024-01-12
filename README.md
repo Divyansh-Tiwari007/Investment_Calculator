@@ -1,38 +1,56 @@
-# Getting Started with Create React App
+Investment Calculator App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Overview
+This is a simple Investment Calculator app built with React and Fluent UI. The app allows users to input their initial investment, annual investment, expected return, and the number of years. It then generates a table displaying the annual return for each year based on the provided inputs.
 
-## Available Scripts
+Features
+Input Form: Users can input their initial investment, annual investment, expected return, and the number of years.
+Dynamic Table: The app generates a dynamic table displaying the annual return for each year, making it easy for users to track their investment growth.
+Technologies Used
+React
+Fluent UI (Office UI Fabric React)
+HTML
+CSS
+How to Use
+Clone the repository to your local machine:
 
-In the project directory, you can run:
+bash
+Copy code
+git clone https://github.com/Divyansh-Tiwari007/Investment_Calculator.git
+Navigate to the project directory:
 
-### `npm start`
+bash
+Copy code
+cd investment-calculator-app
+Install dependencies:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+bash
+Copy code
+npm install
+Start the development server:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+bash
+Copy code
+npm start
+The app will be accessible at http://localhost:3000 by default.
 
-### `npm test`
+Open your browser and visit http://localhost:3000 to use the Investment Calculator.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Screenshots
+<img width="958" alt="Calci_Drawer" src="https://github.com/Divyansh-Tiwari007/Investment_Calculator/assets/100523739/1b9694ce-b5e8-4545-a511-413c5c721d84">
+<img width="945" alt="Calci_DashB" src="https://github.com/Divyansh-Tiwari007/Investment_Calculator/assets/100523739/35651770-af30-44cd-aa05-6c1498673b7e">
 
-### `npm run build`
+Contributing
+If you'd like to contribute to this project, please follow these steps:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Fork the repository.
+Create a new branch for your feature or bug fix: git checkout -b feature-name.
+Make your changes and commit them: git commit -m 'Add new feature'.
+Push to the branch: git push origin feature-name.
+Submit a pull request.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+License
+This project is licensed under the MIT License.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Author
+Divyansh Tiwari
