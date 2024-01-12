@@ -52,5 +52,5 @@ Submit a pull request.
 License
 This project is licensed under the MIT License.
 
-Author
-Divyansh Tiwari
+Authors 
+Divyansh_Tiwari & Ravi_Ghale
